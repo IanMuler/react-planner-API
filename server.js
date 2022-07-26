@@ -1,5 +1,6 @@
 const express = require("express");
 const router = require("./network/routes");
+const port = process.env.PORT || 3000;
 const db = require("./db");
 require("dotenv").config({ path: ".env" });
 
@@ -11,6 +12,6 @@ router(app); // register routes
 
 db(process.env.DB_CONNECT); // connect to db
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Example app listening on port 3000!");
 });
