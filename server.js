@@ -10,6 +10,15 @@ app.use(express.json()); // recieves json data
 app.use(express.urlencoded({ extended: true })); // accepts form data
 app.use(cors()); // allows cross-origin requests
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 router(app); // register routes
 
 db(process.env.DB_CONNECT); // connect to db
